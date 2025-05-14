@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "rolling-text-client-side-solution",
+    "id": "e74db7d7-dd28-4501-93fc-3cdb5a1a9fa8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "RollingText description"
+      },
+      "longDescription": {
+        "default": "RollingText description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "rolling-text Feature",
+        "description": "The feature that activates elements of the rolling-text solution.",
+        "id": "b1ba99f4-d4c5-4f02-938b-9272acebf83a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/rolling-text.sppkg"
+  }
+}

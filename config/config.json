@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "rolling-text-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/rollingText/RollingTextWebPart.js",
+          "manifest": "./src/webparts/rollingText/RollingTextWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "RollingTextWebPartStrings": "lib/webparts/rollingText/loc/{locale}.js"
+  }
+}
