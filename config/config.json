@@ -13,6 +13,7 @@
   },
   "externals": {},
   "localizedResources": {
-    "RollingTextWebPartStrings": "lib/webparts/rollingText/loc/{locale}.js"
+    "RollingTextWebPartStrings": "lib/webparts/rollingText/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
   }
 }

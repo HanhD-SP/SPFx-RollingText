@@ -1,7 +1,16 @@
 export interface IRollingTextProps {
   description: string;
-  isDarkTheme: boolean;
-  environmentMessage: string;
-  hasTeamsContext: boolean;
-  userDisplayName: string;
+  listContent: string;
+  listName: string;
+  Text: string;
+  context: any;
+  lists: any;
+  listId: number;
+  items: string[];
+  item: string;
+  Speed: number;
+  Direction: string;
+  Delay: number;
+  Loop: boolean;
+  // onPropertyChange: (propertyPath: string, newValue: any) => void;
 }
