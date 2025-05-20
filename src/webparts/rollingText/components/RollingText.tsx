@@ -11,7 +11,8 @@ const RollingText: React.FC<IRollingTextProps> = (props) => {
     const fetchListItems = async () => {
       try {
         const response = await props.context.spHttpClient.get(
-          `https://graph.microsoft.com/v1.0/sites/${props.context.pageContext.web.absoluteUrl}/lists/${props.listId}/items`,
+          `${props.context.pageContext.web.absoluteUrl}/_api/web/lists/getbylistId${props.listId}')/items`,
+          // `https://graph.microsoft.com/v1.0/sites/${props.context.pageContext.web.absoluteUrl}/lists/${props.listId}/items`,
           SPHttpClient.configurations.v1
         );
         const data = await response.json();

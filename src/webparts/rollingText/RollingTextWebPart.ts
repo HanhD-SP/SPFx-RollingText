@@ -27,23 +27,23 @@ export interface IRollingTextWebPartProps {
 
 export default class RollingTextWebPart extends BaseClientSideWebPart<IRollingTextWebPartProps> {
   _lists: any;
+  listId: any;
 
-  public render(): void {
-    const element: React.ReactElement<IRollingTextProps> = React.createElement(
+  public async render(): Promise <void> {
+      const element: React.ReactElement<IRollingTextProps> = React.createElement(
       RollingText,
       {
         description: this.properties.description,
         listContent: this.properties.listContent,
-        listName: this.properties.listName,
-        context: this.context,
+        listTitle: this.properties.listTitle, // Ensure this matches IRollingTextProps
+        Text: this.properties.Text || '',
+        Speed: this.properties.Speed || 1,
+        Direction: this.properties.Direction || 'left',
+        Delay: this.properties.Delay || 0,
+        Loop: this.properties.Loop || false,
         lists: this.properties.lists,
         listId: this.properties.listId,
-        Text: this.properties.Text || '', // Replace with actual value if available
-        Speed: this.properties.Speed || 1, // Replace with actual value if available
-        Direction: this.properties.Direction || 'left', // Replace with actual value if available
-        Delay: this.properties.Delay || 0, // Replace with actual value if available
-        Loop: this.properties.Loop || false, // Replace with actual value if available
-        // hasTeamsContext: false, // Provide actual value if available
+        context: this.context,
         items: [], // Provide actual items if available
         item: '' // Provide actual item if available
       }
@@ -52,7 +52,11 @@ export default class RollingTextWebPart extends BaseClientSideWebPart<IRollingTe
   }
 
   public async onInit(): Promise<void> {
-    const response = await this.context.spHttpClient.get(`https://graph.microsoft.com/v1.0/sites/${this.context.pageContext.web.absoluteUrl}/lists?$filter`, SPHttpClient.configurations.v1);
+    const response = await this.context.spHttpClient.get(`${this.context.pageContext.web.absoluteUrl}/_api/web/lists(guid'${this.listId}')/items`,
+  SPHttpClient.configurations.v1
+);
+
+    // const response = await this.context.spHttpClient.get(`https://graph.microsoft.com/v1.0/sites/${this.context.pageContext.web.absoluteUrl}/lists?$filter`, SPHttpClient.configurations.v1);
     const data = await response.json();
     if(data && data.value) {  
     this._lists = data.value.map((list: any) => ({
@@ -86,7 +90,8 @@ export default class RollingTextWebPart extends BaseClientSideWebPart<IRollingTe
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('List Title', {
-                  label: strings.DescriptionFieldLabel
+                  label: 'List Title',
+                  value: this.properties.listName
                 }),
                 PropertyFieldListPicker('lists', {
                 label: 'Select a list',
