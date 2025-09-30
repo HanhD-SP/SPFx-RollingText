@@ -1,3 +1,5 @@
+import { WebPartContext } from "@microsoft/sp-webpart-base";
+
 export interface IRollingTextProps {
   description: string;
   listTitle: string;
@@ -20,4 +22,4 @@ export interface IList {
   Id: string;
   listId: any;
 }
-import { WebPartContext } from "@microsoft/sp-webpart-base";
+

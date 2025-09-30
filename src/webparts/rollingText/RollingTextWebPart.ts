@@ -67,8 +67,12 @@ export default class RollingTextWebPart extends BaseClientSideWebPart<IRollingTe
   }
 
   public async onInit(): Promise<void> {
-    // No manual list fetch required here: PropertyFieldListPicker will query lists using the provided context.
-    // Keep onInit for any future initialization; nothing to do now.
+    // NOTE:
+    // Historically this file attempted to manually fetch lists. The modern and recommended pattern
+    // for SPFx property pane list pickers is to use the PnP `PropertyFieldListPicker` control which
+    // performs its own queries when provided with the web part `context` (see getPropertyPaneConfiguration below).
+    // Therefore we intentionally avoid duplicating list queries here. Keep this method available for
+    // future initialization steps (caching, telemetry, etc.).
     return Promise.resolve();
 } 
 
@@ -91,9 +95,17 @@ export default class RollingTextWebPart extends BaseClientSideWebPart<IRollingTe
             {
               groupName: strings.BasicGroupName,
               groupFields: [
+                // Simple text field to optionally store a human-friendly list title
                 PropertyPaneTextField('listTitle', {
                   label: 'List Title'
                 }),
+                // PropertyFieldListPicker is a PnP control that renders a dropdown of lists for the current site.
+                // Important notes:
+                // - The first parameter 'listId' is the property key on the web part properties bag where the
+                //   selected list's ID (GUID) will be stored.
+                // - We pass `this.context` so the control can query the current site for lists.
+                // - When the user selects a list the web part property `listId` will be updated. The React
+                //   component receives `listId` as a prop and uses it to fetch items from that list.
                 PropertyFieldListPicker('listId', {
                   label: 'Select a list',
                   selectedList: this.properties.listId,
