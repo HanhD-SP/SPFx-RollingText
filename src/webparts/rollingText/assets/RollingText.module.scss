@@ -1,0 +1,66 @@
+/* Viewport: clips the content to a fixed height; tweak as needed */
+.rollingText {
+  --rt-speed: 12s;        /* default (overridden by inline style) */
+  --rt-direction: normal; /* 'normal' = up, 'reverse' = down */
+
+  font: 500 14px/1.3 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--neutral-900, #111);
+  position: relative;
+
+  /* Hover behavior toggled via extra class */
+  &.pauseOnHover .track:hover {
+    animation-play-state: paused;
+  }
+}
+
+.placeholder {
+  padding: 12px 14px;
+  color: #666;
+  background: #fafafa;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+}
+
+.error {
+  padding: 10px 12px;
+  color: #b00020;
+  background: #ffeef0;
+  border: 1px solid #ffdce0;
+  border-radius: 8px;
+}
+
+.viewport {
+  height: 160px;      /* visible window height; adjust for your design */
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent 0, black 14px, black calc(100% - 14px), transparent 100%); /* nice fade top/bottom */
+}
+
+/* The animated column that moves vertically */
+.track {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  animation-name: rt-scroll;
+  animation-duration: var(--rt-speed);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: var(--rt-direction);
+}
+
+/* Each row of text */
+.item {
+  padding: 8px 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+/* Keyframes: translate Y by exactly the combined height so it loops cleanly.
+   We use content duplication in TSX to make the loop seamless regardless of item count. */
+@keyframes rt-scroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); } /* move up by half because list is doubled */
+}

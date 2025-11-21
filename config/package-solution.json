@@ -4,7 +4,7 @@
     "name": "rolling-text-client-side-solution",
     "id": "e74db7d7-dd28-4501-93fc-3cdb5a1a9fa8",
     "version": "1.0.0.0",
-    "includeClientSideAssets": true,
+    "includeClientSideAssets": false,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "developer": {
