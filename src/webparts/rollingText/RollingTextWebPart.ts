@@ -127,7 +127,7 @@ export default class RollingTextWebPart extends BaseClientSideWebPart<IRollingTe
                 PropertyPaneSlider('speedSeconds', {
                   label: 'Speed (seconds per loop)',
                   min: 1,
-                  max: 50,
+                  max: 100,
                   step: 1,
                   showValue: true,
                   value: this.properties.speedSeconds || 8
