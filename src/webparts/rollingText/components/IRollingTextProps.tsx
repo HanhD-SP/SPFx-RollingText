@@ -16,6 +16,7 @@ export interface IRollingTextProps {
   lists: string | string []; // Stores the list ID(s)
   speedSeconds: number; // The speed of the rolling text animation in seconds
   pauseOnHover: boolean; // Whether to pause the animation on hover
+  textColor?: string; // Text color for the rolling text
 }
 export interface IList {
   Title: string;

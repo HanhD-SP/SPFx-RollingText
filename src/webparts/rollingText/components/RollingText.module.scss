@@ -3,18 +3,58 @@
 .rollingText {
   overflow: hidden;
   padding: 1em;
+  width: 100%;
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
-  &.container {
+  
+  .container {
+    display: inline-flex;
+    white-space: nowrap;
+    will-change: transform;
     font-family: $ms-font-family-fallbacks;
+  }
+}
 
+/* Marquee / running ants styles */
+.track {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  /* animation duration will be set inline from React via style.animationDuration */
+  animation-name: scroll-left;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+.group {
+  display: inline-flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.item {
+  display: inline-block;
+  padding: 0 0.5rem;
+  /* Visual treatment to resemble small "running ants" text - keep simple */
+  color: var(--bodyText);
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
 .pauseOnHover {
-  /* Example: pause animation on hover */
-  &:hover {
-    animation-play-state: paused !important;
+  /* Pause animation on hover */
+  .track {
+    &:hover {
+      animation-play-state: paused !important;
+    }
   }
 }
 
