@@ -36,4 +36,4 @@ SPFx Rolling Text web part:
 This project contains a SharePoint Framework web part that demonstrates the following features:
 * Building a custom SPFx Client-Side web part
 * Calling the SharePoint REST APIs
-* Using React components and SCSS styling to create configurable text, speed, and color styling.
+* Using React components and SCSS styling to create configurable text, speed, and text color.
