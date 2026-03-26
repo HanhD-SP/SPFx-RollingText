@@ -7,6 +7,7 @@ SPFx Rolling Text web part:
  4. Customize speed.
 
 ![rollingtext2](https://github.com/user-attachments/assets/57b03b16-ef21-4f92-afa1-e55d7f488bad)
+
 <img width="499" height="564" alt="image" src="https://github.com/user-attachments/assets/13345022-da15-4bec-be01-ac10d2dbf431" />
 
 ## Used SharePoint Framework Version v1.21.1
