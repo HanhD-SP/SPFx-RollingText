@@ -6,10 +6,8 @@ SPFx Rolling Text web part:
  3. Customize text color.
  4. Customize speed.
 
-![RollingTextGIF](https://github.com/user-attachments/assets/7b8fce34-f5b1-4de0-b627-5df945b29cfb)
+![rollingtext2](https://github.com/user-attachments/assets/57b03b16-ef21-4f92-afa1-e55d7f488bad)
 <img width="499" height="564" alt="image" src="https://github.com/user-attachments/assets/13345022-da15-4bec-be01-ac10d2dbf431" />
-
-
 
 ## Used SharePoint Framework Version v1.21.1
 - [SharePoint Framework](https://aka.ms/spfx)
